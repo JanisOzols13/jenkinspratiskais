@@ -11,10 +11,10 @@ pipeline {
             }
         }
       stage('deploy-to-dev') {
-            steps {
-                echo 'deploying to development'
+          steps {
                 powershell 'pm2 start python-greetings/app.py --name greetings-app-dev -p 7001'
                 powershell 'pm2 delete all'
+                echo 'deploying to development'
             }
         }
       stage('tests-on-dev') {
