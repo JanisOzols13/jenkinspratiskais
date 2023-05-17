@@ -7,7 +7,6 @@ pipeline {
                 powershell 'git clone https://github.com/mtararujs/python-greetings'
                 powershell 'ls python-greetings/required_files'
                 powershell 'python3 -m pip install -r python-greetings/requirements.txt'
-    }
                 echo 'Installing pip dependencies'
             }
         }
