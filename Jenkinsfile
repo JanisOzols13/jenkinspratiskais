@@ -20,9 +20,7 @@ pipeline {
       stage('tests-on-dev') {
             steps {
                 powershell 'git clone https://github.com/mtararujs/course-js-api-framework.git'
-
                 powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-workd-pileline@2\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-workd-pileline@2\\ '
-
                 powershell 'npm install'
                 echo 'testing on development'
             }
@@ -36,11 +34,8 @@ pipeline {
         }
       stage('tests-on-staging') {
             steps {
-                powershell 'git clone https://github.com/mtararujs/course-js-api-framework.git'
-
-                powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-workd-pileline\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-workd-pileline\\ '
-
-                powershell 'npm install'
+               
+                powershell 'npm run'
                 echo 'testing on preprodoction'
             }
         }
@@ -52,12 +47,8 @@ pipeline {
             }
         }
       stage('tests-on-preprod') {
-            steps {
-                powershell 'git clone https://github.com/mtararujs/course-js-api-framework.git'
-
-                powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-workd-pileline\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-workd-pileline\\ '
-
-                powershell 'npm install'
+          steps {
+                powershell 'npm run'
                 echo 'testing on preprodoction'
             }
         }
@@ -69,12 +60,8 @@ pipeline {
             }
         }
       stage('tests-on-prod') {
-            steps {
-                powershell 'git clone https://github.com/mtararujs/course-js-api-framework.git'
-
-                powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-workd-pileline\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-workd-pileline\\ '
-
-                powershell 'npm install'
+          steps {
+                powershell 'npm run'
                 echo 'tests on prodoction'
             }
         }
