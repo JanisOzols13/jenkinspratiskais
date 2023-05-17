@@ -4,9 +4,9 @@ pipeline {
     stages {
         stage('install-pip-deps') {
             steps {
-                powershell 'git clone https://github.com/mtararujs/python-greetings'
-                powershell 'ls python-greetings\\required_files'
-                powershell 'python3 -m pip install -r python-greetings/requirements.txt'
+                but 'git clone https://github.com/mtararujs/python-greetings'
+                but 'ls python-greetings\\required_files'
+                but 'python3 -m pip install -r python-greetings/requirements.txt'
                 
                 echo 'Installing pip dependencies'
             }
