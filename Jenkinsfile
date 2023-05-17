@@ -22,6 +22,7 @@ pipeline {
                 powershell 'git clone https://github.com/mtararujs/course-js-api-framework.git'
                 powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-workd-pileline@2\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-workd-pileline@2\\ '
                 powershell 'npm install'
+                powershell 'npm run greetings greetings_dev'
                 echo 'testing on development'
             }
         }
