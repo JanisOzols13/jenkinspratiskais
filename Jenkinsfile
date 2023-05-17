@@ -34,6 +34,23 @@ pipeline {
                 echo 'deploying on stage'
             }
         }
+      stage('tests-on-staging') {
+            steps {
+                powershell 'git clone https://github.com/mtararujs/course-js-api-framework.git'
+
+                powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-workd-pileline\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-workd-pileline\\ '
+
+                powershell 'npm install'
+                echo 'testing on preprodoction'
+            }
+        }
+       stage('deploy-to-preprod') {
+            steps {
+                powershell 'pm2 start python-greetings/app.py --name greetings-app-staging -p 7003'
+                powershell 'pm2 delete all'
+                echo 'deploying on stage'
+            }
+        }
       stage('tests-on-preprod') {
             steps {
                 powershell 'git clone https://github.com/mtararujs/course-js-api-framework.git'
@@ -46,7 +63,7 @@ pipeline {
         }
       stage('deploy-to-prod') {
             steps {
-                powershell 'pm2 start python-greetings/app.py --name greetings-app-staging -p 7002'
+                powershell 'pm2 start python-greetings/app.py --name greetings-app-staging -p 7004'
                 powershell 'pm2 delete all'
                 echo 'deploying to prodoction'
             }
