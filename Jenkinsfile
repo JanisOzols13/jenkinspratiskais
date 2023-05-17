@@ -5,7 +5,11 @@ pipeline {
         stage('install-pip-deps') {
             steps {
                 echo 'Installing pip dependencies'
+                bash 'git clone https://github.com/mtararujs/python-greetings'
                 
+                bash 'ls python-greetings/required_files'
+
+                bash 'pip install -r python-greetings/requirements.txt'
             }
         }
       stage('deploy-to-dev') {
