@@ -6,10 +6,8 @@ pipeline {
             steps {
                 powershell 'git clone https://github.com/mtararujs/python-greetings'
 
-                // Check for the existence of required files if necessary
-                powershell 'dir python-greetings\\required_files'
+                powershell 'ls python-greetings\\required_files'
 
-                // Install the necessary libraries
                 powershell 'pip install -r python-greetings\\requirements.txt'
                 
                 echo 'Installing pip dependencies'
