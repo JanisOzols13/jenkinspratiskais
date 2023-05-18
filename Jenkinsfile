@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('install-pip-deps') {
             steps {
-                echo 'Installing pip dependencies'
+                echo 'instalēt pip atkaribas'
                 powershell 'git clone https://github.com/mtararujs/python-greetings'
                 powershell 'ls python-greetings'
                 powershell 'pip install -r python-greetings\\requirements.txt'
@@ -12,54 +12,54 @@ pipeline {
         }
       stage('deploy-to-dev') {
           steps {
-                echo 'deploying to development'
+                echo 'uzstadisana uz dev'
                 powershell 'pm2 start python-greetings/app.py --name greetings-app-dev -p 7001'
                 powershell 'pm2 delete all'
             }
         }
       stage('tests-on-dev') {
             steps {
-                echo 'testing on development'
+                echo 'testesana uz dev'
                 powershell 'git clone https://github.com/mtararujs/course-js-api-framework.git'
                 powershell 'npm install'
             }
         }
       stage('deploy-to-staging') {
             steps {
-                echo 'deploying on stage'
+                echo 'uzstadisana uz dev'
                 powershell 'pm2 start python-greetings/app.py --name greetings-app-staging -p 7002'
                 powershell 'pm2 delete all'               
             }
         }
       stage('tests-on-staging') {
             steps {
-                echo 'testing on preprodoction'
+                echo 'testesana uz stage'
                 powershell 'npm run'            
             }
         }
        stage('deploy-to-preprod') {
             steps {
-                echo 'deploying on stage'
+                echo 'uzstadisana uz prepod'
                 powershell 'pm2 start python-greetings/app.py --name greetings-app-staging -p 7003'
                 powershell 'pm2 delete all'
             }
         }
       stage('tests-on-preprod') {
           steps {
-                echo 'testing on preprodoction'
+                echo 'testesana uz prepod'
                 powershell 'npm run'   
             }
         }
       stage('deploy-to-prod') {
             steps {
-                echo 'deploying to prodoction'
+                echo 'uzstadisana uz prod'
                 powershell 'pm2 start python-greetings/app.py --name greetings-app-staging -p 7004'
                 powershell 'pm2 delete all'
             }
         }
       stage('tests-on-prod') {
           steps {
-                echo 'tests on prodoction'
+                echo 'ttestesana uz prod'
                 powershell 'npm run'
             }
         }
