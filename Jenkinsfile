@@ -12,57 +12,55 @@ pipeline {
         }
       stage('deploy-to-dev') {
           steps {
+                echo 'deploying to development'
                 powershell 'pm2 start python-greetings/app.py --name greetings-app-dev -p 7001'
                 powershell 'pm2 delete all'
-                echo 'deploying to development'
             }
         }
       stage('tests-on-dev') {
             steps {
-                powershell 'git clone https://github.com/mtararujs/course-js-api-framework.git'
-                powershell 'copy C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-workd-pileline@2\\course-js-api-framework\\package.json C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\hello-workd-pileline@2\\ '
-                powershell 'npm install'
                 echo 'testing on development'
+                powershell 'git clone https://github.com/mtararujs/course-js-api-framework.git'
+                powershell 'npm install'
             }
         }
       stage('deploy-to-staging') {
             steps {
-                powershell 'pm2 start python-greetings/app.py --name greetings-app-staging -p 7002'
-                powershell 'pm2 delete all'
                 echo 'deploying on stage'
+                powershell 'pm2 start python-greetings/app.py --name greetings-app-staging -p 7002'
+                powershell 'pm2 delete all'               
             }
         }
       stage('tests-on-staging') {
             steps {
-               
-                powershell 'npm run'
                 echo 'testing on preprodoction'
+                powershell 'npm run'            
             }
         }
        stage('deploy-to-preprod') {
             steps {
+                echo 'deploying on stage'
                 powershell 'pm2 start python-greetings/app.py --name greetings-app-staging -p 7003'
                 powershell 'pm2 delete all'
-                echo 'deploying on stage'
             }
         }
       stage('tests-on-preprod') {
           steps {
-                powershell 'npm run'
                 echo 'testing on preprodoction'
+                powershell 'npm run'   
             }
         }
       stage('deploy-to-prod') {
             steps {
+                echo 'deploying to prodoction'
                 powershell 'pm2 start python-greetings/app.py --name greetings-app-staging -p 7004'
                 powershell 'pm2 delete all'
-                echo 'deploying to prodoction'
             }
         }
       stage('tests-on-prod') {
           steps {
-                powershell 'npm run'
                 echo 'tests on prodoction'
+                powershell 'npm run'
             }
         }
     }
